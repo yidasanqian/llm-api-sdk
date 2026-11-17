@@ -44,6 +44,8 @@ jobs:
         run: |
           test -n "$CENTRAL_USERNAME" || { echo "::error::CENTRAL_USERNAME is empty"; exit 1; }
           test -n "$CENTRAL_PASSWORD" || { echo "::error::CENTRAL_PASSWORD is empty"; exit 1; }
+          [[ ! "$CENTRAL_USERNAME" =~ [[:space:]] ]] || { echo "::error::CENTRAL_USERNAME contains whitespace"; exit 1; }
+          [[ ! "$CENTRAL_PASSWORD" =~ [[:space:]] ]] || { echo "::error::CENTRAL_PASSWORD contains whitespace"; exit 1; }
           echo "CENTRAL_USERNAME length: ${#CENTRAL_USERNAME}"
           echo "CENTRAL_PASSWORD length: ${#CENTRAL_PASSWORD}"
       - name: Check release coordinates
