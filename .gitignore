@@ -1,0 +1,10 @@
+**/target/
+.idea/
+*.iml
+.classpath
+.project
+.settings/
+.env
+*.log
+*.asc
+!**/src/test/resources/*.asc

@@ -1,0 +1,33 @@
+name: Feature request
+description: Propose a protocol adapter, usage meter, pricing strategy or developer experience improvement.
+title: "[Feature]: "
+labels: [enhancement]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: Describe the concrete use case and why the existing extension points are insufficient.
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed behavior
+      description: Describe the public contract, protocol pair or pricing unit involved.
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+      description: Explain whether an existing adapter, decoder or strategy can be reused.
+    validations:
+      required: false
+  - type: textarea
+    id: compatibility
+    attributes:
+      label: Compatibility
+      description: Note any public API, serialization or upstream protocol impact.
+    validations:
+      required: false

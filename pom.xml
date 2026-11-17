@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>io.github.yidasanqian</groupId>
+  <artifactId>llm-api-sdk-parent</artifactId>
+  <version>0.1.0</version>
+  <packaging>pom</packaging>
+  <name>LLM API SDK</name>
+  <description>Reactive native LLM clients, protocol bridges, usage normalization and extensible pricing for Java.</description>
+  <url>https://github.com/yidasanqian/llm-api-sdk</url>
+  <licenses><license><name>Apache License, Version 2.0</name><url>https://www.apache.org/licenses/LICENSE-2.0.txt</url><distribution>repo</distribution></license></licenses>
+  <developers><developer><id>yidasanqian</id><name>yidasanqian</name><email>yidasanqian@gmail.com</email><url>https://github.com/yidasanqian</url></developer></developers>
+  <scm>
+    <connection>scm:git:https://github.com/yidasanqian/llm-api-sdk.git</connection>
+    <developerConnection>scm:git:ssh://git@github.com/yidasanqian/llm-api-sdk.git</developerConnection>
+    <url>https://github.com/yidasanqian/llm-api-sdk</url>
+    <tag>HEAD</tag>
+  </scm>
+  <modules><module>llm-api-sdk-core</module><module>llm-api-sdk-webflux</module><module>llm-api-sdk-pricing</module></modules>
+  <properties>
+    <maven.compiler.release>17</maven.compiler.release>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    <project.build.outputTimestamp>2026-11-17T00:00:00Z</project.build.outputTimestamp>
+    <jackson.version>3.1.8</jackson.version>
+    <spring.version>7.0.10</spring.version>
+    <reactor-bom.version>2025.0.8</reactor-bom.version>
+    <netty.version>4.2.19.Final</netty.version>
+    <slf4j.version>2.0.17</slf4j.version>
+    <lombok.version>1.18.44</lombok.version>
+    <junit.version>5.11.4</junit.version>
+    <central.skipUpload>false</central.skipUpload>
+  </properties>
+  <dependencyManagement><dependencies>
+    <dependency><groupId>tools.jackson</groupId><artifactId>jackson-bom</artifactId><version>${jackson.version}</version><type>pom</type><scope>import</scope></dependency>
+    <dependency><groupId>org.springframework</groupId><artifactId>spring-framework-bom</artifactId><version>${spring.version}</version><type>pom</type><scope>import</scope></dependency>
+    <dependency><groupId>io.projectreactor</groupId><artifactId>reactor-bom</artifactId><version>${reactor-bom.version}</version><type>pom</type><scope>import</scope></dependency>
+    <dependency><groupId>io.netty</groupId><artifactId>netty-bom</artifactId><version>${netty.version}</version><type>pom</type><scope>import</scope></dependency>
+    <dependency><groupId>org.slf4j</groupId><artifactId>slf4j-api</artifactId><version>${slf4j.version}</version></dependency>
+    <dependency><groupId>org.junit</groupId><artifactId>junit-bom</artifactId><version>${junit.version}</version><type>pom</type><scope>import</scope></dependency>
+    <dependency><groupId>org.assertj</groupId><artifactId>assertj-core</artifactId><version>3.27.7</version></dependency>
+  </dependencies></dependencyManagement>
+  <dependencies>
+    <dependency><groupId>org.projectlombok</groupId><artifactId>lombok</artifactId><version>${lombok.version}</version><scope>provided</scope><optional>true</optional></dependency>
+    <dependency><groupId>org.junit.jupiter</groupId><artifactId>junit-jupiter</artifactId><scope>test</scope></dependency>
+    <dependency><groupId>org.assertj</groupId><artifactId>assertj-core</artifactId><scope>test</scope></dependency>
+    <dependency><groupId>io.projectreactor</groupId><artifactId>reactor-test</artifactId><scope>test</scope></dependency>
+  </dependencies>
+  <build><plugins>
+    <plugin><groupId>org.apache.maven.plugins</groupId><artifactId>maven-compiler-plugin</artifactId><version>3.14.1</version><configuration>
+      <release>${maven.compiler.release}</release><parameters>true</parameters>
+      <annotationProcessorPaths><path><groupId>org.projectlombok</groupId><artifactId>lombok</artifactId><version>${lombok.version}</version></path></annotationProcessorPaths>
+    </configuration></plugin>
+    <plugin><groupId>org.apache.maven.plugins</groupId><artifactId>maven-surefire-plugin</artifactId><version>3.5.5</version></plugin>
+    <plugin><groupId>org.apache.maven.plugins</groupId><artifactId>maven-jar-plugin</artifactId><version>3.4.2</version></plugin>
+  </plugins></build>
+  <profiles>
+    <profile><id>release</id><build><plugins>
+      <plugin><groupId>org.apache.maven.plugins</groupId><artifactId>maven-source-plugin</artifactId><version>3.3.1</version><executions><execution><id>sources</id><goals><goal>jar-no-fork</goal></goals></execution></executions></plugin>
+      <plugin><groupId>org.apache.maven.plugins</groupId><artifactId>maven-javadoc-plugin</artifactId><version>3.11.2</version><configuration><doclint>all,-missing</doclint></configuration><executions><execution><id>javadoc</id><goals><goal>jar</goal></goals></execution></executions></plugin>
+      <plugin><groupId>org.apache.maven.plugins</groupId><artifactId>maven-gpg-plugin</artifactId><version>3.2.8</version><configuration><bestPractices>true</bestPractices></configuration><executions><execution><id>sign</id><phase>verify</phase><goals><goal>sign</goal></goals></execution></executions></plugin>
+      <plugin><groupId>org.sonatype.central</groupId><artifactId>central-publishing-maven-plugin</artifactId><version>0.12.0</version><extensions>true</extensions><configuration><publishingServerId>central</publishingServerId><autoPublish>true</autoPublish><waitUntil>published</waitUntil><skipUpload>${central.skipUpload}</skipUpload></configuration></plugin>
+    </plugins></build></profile>
+  </profiles>
+</project>
