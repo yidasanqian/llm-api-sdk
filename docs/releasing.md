@@ -23,14 +23,14 @@ All release builds run in GitHub Actions. Do not stage or deploy Maven Central a
 1. Set the root, module and example versions to the release version, then commit and push `main`.
 2. Wait for the Java 17/21/25 CI matrix and the standalone consumer job to pass.
 3. Create and push the matching tag: `git tag -a v0.1.0 -m "v0.1.0"` then `git push origin v0.1.0`.
-4. The workflow checks `v$version`, builds, signs, publishes to Central and waits until publication completes.
+4. The workflow checks `v$version`, builds, signs, publishes to Central and waits up to 60 minutes for publication to complete. The job has a 90-minute overall timeout.
 5. After Central publication succeeds, the workflow creates a GitHub Release for the same tag.
 6. Verify the released artifacts from a clean Maven repository and the standalone example.
 
 ## After publication
 
 - Keep the released tag and artifacts immutable. Publish a new version for any fix.
-- Update README badges after Central indexes the artifacts.
+- Update the README version and Central badges for the new release.
 - Start the next development version as a new SNAPSHOT, for example `0.1.1-SNAPSHOT`.
 
 References: [Central requirements](https://central.sonatype.org/publish/requirements/), [publisher plugin](https://central.sonatype.org/publish/publish-portal-maven/), [namespaces](https://central.sonatype.org/register/namespace/).
