@@ -5,13 +5,13 @@
 [![Jackson 3.1](https://img.shields.io/badge/Jackson-3.1-2E7D32)](pom.xml)
 [![License: Apache-2.0](https://img.shields.io/badge/License-Apache--2.0-blue)](LICENSE)
 [![Version: 0.1.0](https://img.shields.io/badge/version-0.1.0-orange)](CHANGELOG.md)
-[![Maven Central: pending](https://img.shields.io/badge/Maven_Central-pending-lightgrey)](docs/releasing.md)
+[![Maven Central: 0.1.0](https://img.shields.io/badge/Maven_Central-0.1.0-blue)](https://central.sonatype.com/artifact/io.github.yidasanqian/llm-api-sdk-core/0.1.0)
 
 **English** | [简体中文](README.zh-CN.md)
 
 Java SDK for gateway and proxy developers: native LLM requests, protocol bridges, upstream usage and extensible pricing. Java **17+**, **Jackson 3**, Reactor and an optional Spring WebFlux transport. No Spring application context, database or Redis is required.
 
-**Status:** `0.1.0`, prepared for its first Maven Central release. Builds, signatures, Central publication and GitHub Release run in GitHub Actions.
+**Status:** `0.1.0`, published to Maven Central. Builds, signatures, Central publication and GitHub Release run in GitHub Actions.
 
 ## Modules
 
