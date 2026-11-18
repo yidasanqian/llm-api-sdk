@@ -11,7 +11,32 @@
 
 Java SDK for gateway and proxy developers: native LLM requests, protocol bridges, upstream usage and extensible pricing. Java **17+**, **Jackson 3**, Reactor and an optional Spring WebFlux transport. No Spring application context, database or Redis is required.
 
+It is a library, not a gateway framework. Your gateway keeps routing, credentials, tenancy and persistence; this SDK owns the parts that are easy to get wrong:
+
+- Speaking OpenAI Chat, OpenAI Responses, Anthropic Messages and Gemini natively, and converting between them with documented field loss instead of silent reshaping.
+- Reading usage from the **upstream** protocol, so billing follows what the provider actually reported rather than what the client route implies.
+- Refusing to bill silently: missing usage is not zero, and a positive meter without a rate fails instead of charging nothing.
+
 **Status:** `0.2.0`, published to Maven Central. Builds, signatures, Central publication and GitHub Release run in GitHub Actions.
+
+## Install
+
+`llm-api-sdk-webflux` brings in `core` transitively; add `pricing` only when the host bills usage.
+
+```xml
+<dependency>
+  <groupId>io.github.yidasanqian</groupId>
+  <artifactId>llm-api-sdk-webflux</artifactId>
+  <version>0.2.0</version>
+</dependency>
+<dependency>
+  <groupId>io.github.yidasanqian</groupId>
+  <artifactId>llm-api-sdk-pricing</artifactId>
+  <version>0.2.0</version>
+</dependency>
+```
+
+API reference: [core](https://javadoc.io/doc/io.github.yidasanqian/llm-api-sdk-core) · [webflux](https://javadoc.io/doc/io.github.yidasanqian/llm-api-sdk-webflux) · [pricing](https://javadoc.io/doc/io.github.yidasanqian/llm-api-sdk-pricing).
 
 ## Modules
 

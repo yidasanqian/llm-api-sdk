@@ -11,7 +11,32 @@
 
 面向网关和代理开发者的 Java SDK，提供 LLM 原生协议请求、协议转换、上游 usage 解析和可扩展计价。基于 Java **17+**、**Jackson 3** 和 Reactor，可选 Spring WebFlux 传输模块。无需启动 Spring 应用上下文，也不依赖数据库或 Redis。
 
+它是库，不是网关框架。路由、凭据、租户和持久化仍归你的网关；SDK 负责容易出错的部分：
+
+- 原生支持 OpenAI Chat、OpenAI Responses、Anthropic Messages 和 Gemini，并在协议之间转换，字段丢失有明确文档，不做静默改写。
+- 从**上游**协议读取 usage，让计费依据提供商实际返回的用量，而不是客户端路由暗示的用量。
+- 拒绝静默计费：缺失 usage 不等于零用量，应计费用量为正却缺少费率时会失败，而不是按零收费。
+
 **当前状态：** `0.2.0`，已发布到 Maven Central。构建、签名、Central 发布和 GitHub Release 均由 GitHub Actions 自动执行。
+
+## 安装
+
+`llm-api-sdk-webflux` 会传递依赖 `core`；只有需要计费时才添加 `pricing`。
+
+```xml
+<dependency>
+  <groupId>io.github.yidasanqian</groupId>
+  <artifactId>llm-api-sdk-webflux</artifactId>
+  <version>0.2.0</version>
+</dependency>
+<dependency>
+  <groupId>io.github.yidasanqian</groupId>
+  <artifactId>llm-api-sdk-pricing</artifactId>
+  <version>0.2.0</version>
+</dependency>
+```
+
+API 文档：[core](https://javadoc.io/doc/io.github.yidasanqian/llm-api-sdk-core) · [webflux](https://javadoc.io/doc/io.github.yidasanqian/llm-api-sdk-webflux) · [pricing](https://javadoc.io/doc/io.github.yidasanqian/llm-api-sdk-pricing)。
 
 ## 模块
 
