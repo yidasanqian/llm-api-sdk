@@ -48,6 +48,21 @@ API 文档：[core](https://javadoc.io/doc/io.github.yidasanqian/llm-api-sdk-cor
 
 路由、凭据存储、Token 估算、折扣、汇率换算、账户、Responses 状态持久化和结算由宿主应用负责。
 
+## 对比
+
+Spring AI 和 LangChain4j 是应用框架，用 `ChatModel`、`ChatClient`、`AiServices` 封装模型调用。本 SDK 是网关数据面库，把一次调用视为 HTTP/SSE 报文加一次可计费事件。两者互补，不互相替代。
+
+| | Spring AI | LangChain4j | 本 SDK |
+| --- | --- | --- | --- |
+| 主抽象 | `ChatClient` / `ChatModel` / Advisor | `AiServices` / `ChatModel` | 原始请求响应加 `ProtocolBridge` |
+| 报文保真 | 规整为 `ChatResponse` | 规整为 `ChatResponse` | 保留状态码、响应头和原始 body，含非 2xx |
+| 跨协议转换 | 面向 provider 的适配 | 面向 provider 的适配 | 客户端到上游的桥接，并校验终止事件 |
+| usage | prompt/completion/total 加 native usage | input/output/total token，不含费用 | 统一计量项，区分已确认与部分观测 |
+| 费用 | 不提供 | `TokenUsage` 不含价格 | 独立 pricing 模块，显式单位和费率 |
+| 调用生命周期 | 框架管理 | 框架管理 | 每次订阅一次请求，可控取消与有界续读 |
+
+需要 Agent、RAG、工具编排或 Spring Boot 集成时用 Spring AI 或 LangChain4j；需要网关保真转发、协议转换并按上游 usage 计费时用本 SDK。
+
 ## 构建
 
 ```shell

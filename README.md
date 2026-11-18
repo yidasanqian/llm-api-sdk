@@ -48,6 +48,21 @@ API reference: [core](https://javadoc.io/doc/io.github.yidasanqian/llm-api-sdk-c
 
 The SDK does not own routing, credentials storage, token estimation, discounts, currency conversion, accounts, persistent Responses state or settlement. Hosts retain these policies.
 
+## How it compares
+
+Spring AI and LangChain4j are application frameworks: they hide model calls behind `ChatModel`, `ChatClient` and `AiServices`. This SDK is a gateway data-plane library: it treats a call as an HTTP/SSE exchange plus a billable event. The two roles compose rather than compete.
+
+| | Spring AI | LangChain4j | This SDK |
+| --- | --- | --- | --- |
+| Primary abstraction | `ChatClient` / `ChatModel` / Advisor | `AiServices` / `ChatModel` | Raw request and response plus `ProtocolBridge` |
+| Wire fidelity | Normalized `ChatResponse` | Normalized `ChatResponse` | Status, headers and original body, including non-2xx |
+| Cross-protocol conversion | Provider adapters | Provider adapters | Client-to-upstream bridges with terminal-event rules |
+| Usage | prompt/completion/total plus native usage | input/output/total tokens, no cost | Normalized meters, confirmed versus partial |
+| Cost | Not included | `TokenUsage` carries no price | Separate pricing module with explicit units and rates |
+| Call lifecycle | Framework-managed | Framework-managed | One request per subscription, cancellation, bounded drain |
+
+Use Spring AI or LangChain4j for agents, RAG, tool orchestration and Spring Boot integration. Use this SDK when a gateway must preserve raw payloads, convert between client and upstream protocols, and bill from upstream usage.
+
 ## Build
 
 ```shell
