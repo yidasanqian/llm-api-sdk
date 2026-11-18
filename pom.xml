@@ -8,13 +8,13 @@
   <packaging>pom</packaging>
   <name>LLM API SDK</name>
   <description>Reactive native LLM clients, protocol bridges, usage normalization and extensible pricing for Java.</description>
-  <url>https://github.com/yidasanqian/llm-api-sdk</url>
+  <url>https://github.com/yidasanqian/llm-api-sdk-java</url>
   <licenses><license><name>Apache License, Version 2.0</name><url>https://www.apache.org/licenses/LICENSE-2.0.txt</url><distribution>repo</distribution></license></licenses>
   <developers><developer><id>yidasanqian</id><name>yidasanqian</name><email>yidasanqian@gmail.com</email><url>https://github.com/yidasanqian</url></developer></developers>
   <scm>
-    <connection>scm:git:https://github.com/yidasanqian/llm-api-sdk.git</connection>
-    <developerConnection>scm:git:ssh://git@github.com/yidasanqian/llm-api-sdk.git</developerConnection>
-    <url>https://github.com/yidasanqian/llm-api-sdk</url>
+    <connection>scm:git:https://github.com/yidasanqian/llm-api-sdk-java.git</connection>
+    <developerConnection>scm:git:ssh://git@github.com/yidasanqian/llm-api-sdk-java.git</developerConnection>
+    <url>https://github.com/yidasanqian/llm-api-sdk-java</url>
     <tag>HEAD</tag>
   </scm>
   <modules><module>llm-api-sdk-core</module><module>llm-api-sdk-webflux</module><module>llm-api-sdk-pricing</module></modules>

@@ -1,6 +1,6 @@
 # LLM API SDK
 
-[![CI](https://github.com/yidasanqian/llm-api-sdk/actions/workflows/ci.yml/badge.svg)](https://github.com/yidasanqian/llm-api-sdk/actions/workflows/ci.yml)
+[![CI](https://github.com/yidasanqian/llm-api-sdk-java/actions/workflows/ci.yml/badge.svg)](https://github.com/yidasanqian/llm-api-sdk-java/actions/workflows/ci.yml)
 [![Java 17+](https://img.shields.io/badge/Java-17%2B-007396?logo=openjdk&logoColor=white)](pom.xml)
 [![Jackson 3.1](https://img.shields.io/badge/Jackson-3.1-2E7D32)](pom.xml)
 [![License: Apache-2.0](https://img.shields.io/badge/License-Apache--2.0-blue)](LICENSE)
