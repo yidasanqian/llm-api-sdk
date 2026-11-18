@@ -15,6 +15,6 @@ Important preserved boundaries:
 - OpenAI cached input is a subset of input; Anthropic cache creation/read accounting differs. Quote normalized upstream meters, never parse the mapped response to derive a bill.
 - Gemini native generation works without a bridge. Gemini-to-Chat remains a community extension, demonstrated only by adapter contract tests.
 - Seedance video task JSON is supported natively for authoritative succeeded-only usage and four-tier output-token pricing. Task tables, polling, ownership, settlement and deletion remain host responsibilities.
-- Binary image/audio, realtime WebSocket sessions, other async video lifecycles and Responses database-backed state are outside v0.1.0 transport scope.
+- Binary image/audio, realtime WebSocket sessions, other async video lifecycles and Responses database-backed state are outside the current transport scope.
 
 For each new feature, add concrete JSON/SSE fixtures and document how unsupported fields behave. Do not claim support based only on successful compilation or a single happy-path response.

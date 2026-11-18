@@ -12,7 +12,7 @@ mvn -f examples/basic/pom.xml org.codehaus.mojo:exec-maven-plugin:3.5.0:java -De
 
 The default main only maps and prices a local fixture. To make a real, potentially billable model request, explicitly set `LLM_ENDPOINT` (the full Chat Completions URL), `LLM_MODEL` and `LLM_API_KEY`, and add `-Dexec.args=call`. Do not put keys in source files or command-line arguments.
 
-The example defaults to `0.1.0`. Before Central publication, install the SDK from the repository root. After publication, verify the same version with an empty Maven local repository to confirm resolution from Central.
+The example defaults to `0.2.0`. Before Central publication, install the SDK from the repository root. After publication, verify the same version with an empty Maven local repository to confirm resolution from Central.
 
 ## Manual live protocol verification
 

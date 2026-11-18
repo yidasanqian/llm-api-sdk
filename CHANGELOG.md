@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.2.0 — 2026-11-18
+
+- Rename the repository to `llm-api-sdk-java` and update SCM, CI badge and security advisory links. Maven coordinates are unchanged.
+- Upgrade Jackson to 3.3.0, JUnit to 6.1.3, SLF4J to 2.0.20, maven-surefire-plugin to 3.6.1, maven-jar-plugin to 3.5.1 and actions/setup-java to v6.
+- Fail release builds early when Central credentials contain whitespace.
+- Extend the Central publication wait window.
+
 ## 0.1.0 — 2026-11-17
 
 - Native reactive LLM HTTP/SSE clients and four protocol bridge directions.

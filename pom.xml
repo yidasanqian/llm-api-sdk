@@ -4,7 +4,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>io.github.yidasanqian</groupId>
   <artifactId>llm-api-sdk-parent</artifactId>
-  <version>0.1.0</version>
+  <version>0.2.0</version>
   <packaging>pom</packaging>
   <name>LLM API SDK</name>
   <description>Reactive native LLM clients, protocol bridges, usage normalization and extensible pricing for Java.</description>
