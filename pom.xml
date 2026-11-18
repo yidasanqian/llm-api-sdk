@@ -29,7 +29,7 @@
     <netty.version>4.2.19.Final</netty.version>
     <slf4j.version>2.0.20</slf4j.version>
     <lombok.version>1.18.44</lombok.version>
-    <junit.version>5.11.4</junit.version>
+    <junit.version>6.1.3</junit.version>
     <central.skipUpload>false</central.skipUpload>
   </properties>
   <dependencyManagement><dependencies>
