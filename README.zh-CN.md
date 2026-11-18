@@ -9,6 +9,8 @@
 
 [English](README.md) | **简体中文**
 
+![llm-api-sdk-java 的位置：客户端协议、你的网关、SDK 数据面和上游提供商](docs/assets/architecture.png)
+
 面向网关和代理开发者的 Java SDK，提供 LLM 原生协议请求、协议转换、上游 usage 解析和可扩展计价。基于 Java **17+**、**Jackson 3** 和 Reactor，可选 Spring WebFlux 传输模块。无需启动 Spring 应用上下文，也不依赖数据库或 Redis。
 
 它是库，不是网关框架。路由、凭据、租户和持久化仍归你的网关；SDK 负责容易出错的部分：
@@ -50,7 +52,7 @@ API 文档：[core](https://javadoc.io/doc/io.github.yidasanqian/llm-api-sdk-cor
 
 ## 对比
 
-Spring AI 和 LangChain4j 是应用框架，用 `ChatModel`、`ChatClient`、`AiServices` 封装模型调用。本 SDK 是网关数据面库，把一次调用视为 HTTP/SSE 报文加一次可计费事件。两者互补，不互相替代。
+Spring AI 和 LangChain4j 是应用框架，用 `ChatModel`、`ChatClient`、`AiServices` 封装模型调用。本 SDK 是网关数据面库，把一次调用视为 HTTP/SSE 报文加一次可计费事件。两者互补，不互相替代。包含调用生命周期和失败语义的完整对比见[为什么不用 Spring AI 或 LangChain4j](docs/comparison.zh-CN.md)。
 
 | | Spring AI | LangChain4j | 本 SDK |
 | --- | --- | --- | --- |
@@ -69,6 +71,12 @@ Spring AI 和 LangChain4j 是应用框架，用 `ChatModel`、`ChatClient`、`Ai
 mvn verify
 mvn -Dmaven.test.skip=true install
 mvn -f examples/basic/pom.xml test
+```
+
+不需要 API Key 就能看到协议转换和计价结果，安装后运行离线 fixture 示例：
+
+```shell
+mvn -f examples/basic/pom.xml org.codehaus.mojo:exec-maven-plugin:3.5.0:java -Dexec.mainClass=example.StandaloneExample
 ```
 
 所有产物使用 Java 17 字节码，CI 配置覆盖 Java 17、21 和 25。WebFlux 模块使用 Spring Framework 7；支持 Java 17 不代表兼容 Spring Boot 3 / Framework 6 的依赖组合。Jackson core/databind 使用 `tools.jackson` 3.x；官方共用的注解库仍使用 `com.fasterxml.jackson.annotation` 包名。

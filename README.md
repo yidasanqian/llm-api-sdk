@@ -9,6 +9,8 @@
 
 **English** | [简体中文](README.zh-CN.md)
 
+![Where llm-api-sdk-java sits: client protocols, your gateway, the SDK data plane and upstream providers](docs/assets/architecture.png)
+
 Java SDK for gateway and proxy developers: native LLM requests, protocol bridges, upstream usage and extensible pricing. Java **17+**, **Jackson 3**, Reactor and an optional Spring WebFlux transport. No Spring application context, database or Redis is required.
 
 It is a library, not a gateway framework. Your gateway keeps routing, credentials, tenancy and persistence; this SDK owns the parts that are easy to get wrong:
@@ -50,7 +52,7 @@ The SDK does not own routing, credentials storage, token estimation, discounts, 
 
 ## How it compares
 
-Spring AI and LangChain4j are application frameworks: they hide model calls behind `ChatModel`, `ChatClient` and `AiServices`. This SDK is a gateway data-plane library: it treats a call as an HTTP/SSE exchange plus a billable event. The two roles compose rather than compete.
+Spring AI and LangChain4j are application frameworks: they hide model calls behind `ChatModel`, `ChatClient` and `AiServices`. This SDK is a gateway data-plane library: it treats a call as an HTTP/SSE exchange plus a billable event. The two roles compose rather than compete. The full table, including lifecycle and failure behaviour, is in [Why not Spring AI or LangChain4j](docs/comparison.md).
 
 | | Spring AI | LangChain4j | This SDK |
 | --- | --- | --- | --- |
@@ -69,6 +71,12 @@ Use Spring AI or LangChain4j for agents, RAG, tool orchestration and Spring Boot
 mvn verify
 mvn -Dmaven.test.skip=true install
 mvn -f examples/basic/pom.xml test
+```
+
+To see protocol mapping and pricing without an API key, run the offline fixture example after installing:
+
+```shell
+mvn -f examples/basic/pom.xml org.codehaus.mojo:exec-maven-plugin:3.5.0:java -Dexec.mainClass=example.StandaloneExample
 ```
 
 All artifacts use Java 17 bytecode. CI tests Java 17, 21 and 25. The WebFlux module uses Spring Framework 7; Java 17 compatibility is not a promise of Spring Boot 3 / Framework 6 dependency compatibility. Jackson core/databind use `tools.jackson` 3.x; the official shared annotations artifact still uses `com.fasterxml.jackson.annotation`.
