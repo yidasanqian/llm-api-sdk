@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="952" height="436" viewBox="0 0 952 436" role="img" aria-labelledby="title desc">
+  <title id="title">Where llm-api-sdk-java sits</title>
+  <desc id="desc">Client protocols enter your gateway. Inside the gateway, llm-api-sdk-java converts protocols, forwards HTTP and SSE, and parses the usage reported by the upstream provider. Pricing turns that usage into billable meters.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 Z" fill="#8b949e"/>
+    </marker>
+    <style>
+      .hdr { font: 600 10px/1 ui-sans-serif, -apple-system, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif; letter-spacing: 1.2px; fill: #656d76; }
+      .box { fill: #f6f8fa; stroke: #d0d7de; stroke-width: 1; }
+      .card { fill: #ffffff; stroke: #d0d7de; stroke-width: 1; }
+      .sdk { fill: #fbf7ff; stroke: #8250df; stroke-width: 1.4; }
+      .t1 { font: 600 13px/1 ui-sans-serif, -apple-system, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif; fill: #1f2328; }
+      .t2 { font: 10px/1 ui-sans-serif, -apple-system, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif; fill: #656d76; }
+      .mono { font: 600 11.5px/1 ui-monospace, SFMono-Regular, "Cascadia Mono", Consolas, monospace; fill: #1f2328; }
+      .name { font: 600 11px/1 ui-monospace, SFMono-Regular, "Cascadia Mono", Consolas, monospace; letter-spacing: 0.6px; fill: #6e40c9; }
+      .cap { font: 10px/1 ui-sans-serif, -apple-system, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif; fill: #656d76; }
+      .note { font: 11.5px/1 ui-sans-serif, -apple-system, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif; fill: #1f2328; }
+    </style>
+  </defs>
+
+  <text class="hdr" x="16" y="26">CLIENT PROTOCOL</text>
+  <text class="hdr" x="346" y="26">YOUR GATEWAY</text>
+  <text class="hdr" x="716" y="26">UPSTREAM</text>
+
+  <rect class="box" x="16" y="40" width="220" height="292" rx="10"/>
+  <rect class="card" x="30" y="59" width="192" height="52" rx="8"/>
+  <text class="t1" x="126" y="80" text-anchor="middle">OpenAI Chat</text>
+  <text class="t2" x="126" y="97" text-anchor="middle">chat/completions</text>
+  <rect class="card" x="30" y="126" width="192" height="52" rx="8"/>
+  <text class="t1" x="126" y="147" text-anchor="middle">OpenAI Responses</text>
+  <text class="t2" x="126" y="164" text-anchor="middle">v1/responses</text>
+  <rect class="card" x="30" y="193" width="192" height="52" rx="8"/>
+  <text class="t1" x="126" y="214" text-anchor="middle">Anthropic Messages</text>
+  <text class="t2" x="126" y="231" text-anchor="middle">v1/messages</text>
+  <rect class="card" x="30" y="260" width="192" height="52" rx="8"/>
+  <text class="t1" x="126" y="281" text-anchor="middle">Gemini</text>
+  <text class="t2" x="126" y="298" text-anchor="middle">generateContent</text>
+
+  <rect class="card" x="346" y="40" width="260" height="292" rx="10" stroke="#0969da" stroke-width="1.4"/>
+  <text class="t1" x="362" y="64">your gateway</text>
+  <text class="t2" x="362" y="82">routing · credentials · tenancy · persistence</text>
+  <rect class="sdk" x="358" y="98" width="236" height="214" rx="8"/>
+  <text class="name" x="370" y="118">llm-api-sdk-java</text>
+  <line x1="370" y1="128" x2="582" y2="128" stroke="#d8c8f5" stroke-width="1"/>
+  <text class="mono" x="370" y="150">ProtocolBridge</text>
+  <text class="t2" x="370" y="164">client ↔ upstream, terminal-event rules</text>
+  <text class="mono" x="370" y="192">LlmClient</text>
+  <text class="t2" x="370" y="206">HTTP + SSE, cancellation, bounded drain</text>
+  <text class="mono" x="370" y="234">UsageParser</text>
+  <text class="t2" x="370" y="248">raw upstream usage, confirmed vs partial</text>
+  <text class="mono" x="370" y="276">PricingStrategy</text>
+  <text class="t2" x="370" y="290">explicit units and rates, no silent zero</text>
+
+  <rect class="box" x="716" y="40" width="220" height="292" rx="10"/>
+  <rect class="card" x="730" y="59" width="192" height="52" rx="8"/>
+  <text class="t1" x="826" y="80" text-anchor="middle">OpenAI</text>
+  <text class="t2" x="826" y="97" text-anchor="middle">api.openai.com</text>
+  <rect class="card" x="730" y="126" width="192" height="52" rx="8"/>
+  <text class="t1" x="826" y="147" text-anchor="middle">Anthropic</text>
+  <text class="t2" x="826" y="164" text-anchor="middle">api.anthropic.com</text>
+  <rect class="card" x="730" y="193" width="192" height="52" rx="8"/>
+  <text class="t1" x="826" y="214" text-anchor="middle">Gemini</text>
+  <text class="t2" x="826" y="231" text-anchor="middle">generativelanguage</text>
+  <rect class="card" x="730" y="260" width="192" height="52" rx="8"/>
+  <text class="t1" x="826" y="281" text-anchor="middle">Any HTTP/SSE provider</text>
+  <text class="t2" x="826" y="298" text-anchor="middle">via ProtocolAdapter</text>
+
+  <line x1="240" y1="170" x2="340" y2="170" stroke="#8b949e" stroke-width="1.4" marker-end="url(#arrow)"/>
+  <text class="cap" x="290" y="160" text-anchor="middle">client protocol</text>
+  <line x1="610" y1="170" x2="710" y2="170" stroke="#8b949e" stroke-width="1.4" marker-end="url(#arrow)"/>
+  <text class="cap" x="660" y="160" text-anchor="middle">upstream protocol</text>
+  <line x1="710" y1="232" x2="612" y2="232" stroke="#8250df" stroke-width="1.4" stroke-dasharray="5 4" marker-end="url(#arrow)"/>
+  <text class="cap" x="661" y="222" text-anchor="middle">usage report</text>
+
+  <rect class="box" x="16" y="356" width="920" height="56" rx="8"/>
+  <rect x="16" y="356" width="4" height="56" rx="2" fill="#8250df"/>
+  <text class="note" x="38" y="380">Billing reads the usage the upstream provider reported — not what the client route implies.</text>
+  <text class="note" x="38" y="400">Missing usage is not zero, and a positive meter without a rate fails instead of charging nothing.</text>
+</svg>

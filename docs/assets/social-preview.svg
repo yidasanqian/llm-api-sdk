@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="640" viewBox="0 0 1280 640" role="img" aria-labelledby="title">
+  <title id="title">llm-api-sdk-java — gateway data plane for LLM protocols and billing</title>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0d1117"/>
+      <stop offset="1" stop-color="#161b22"/>
+    </linearGradient>
+    <style>
+      .sans { font-family: ui-sans-serif, -apple-system, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif; }
+      .mono { font-family: ui-monospace, SFMono-Regular, "Cascadia Mono", Consolas, monospace; }
+    </style>
+  </defs>
+
+  <rect width="1280" height="640" fill="url(#bg)"/>
+  <g opacity="0.16" stroke="#8250df" stroke-width="1">
+    <path d="M0 520 L1280 320"/>
+    <path d="M0 600 L1280 400"/>
+    <path d="M0 440 L1280 240"/>
+  </g>
+
+  <g transform="translate(96,96)">
+    <text class="mono" font-size="20" fill="#a371f7" letter-spacing="3">LLM-API-SDK-JAVA</text>
+    <text class="sans" font-size="60" font-weight="700" fill="#f0f6fc" y="88">The gateway data plane</text>
+    <text class="sans" font-size="60" font-weight="700" fill="#f0f6fc" y="160">for LLM protocols and billing</text>
+
+    <text class="sans" font-size="24" fill="#8b949e" y="224">Protocol bridges · raw HTTP/SSE fidelity · upstream usage · explicit rates</text>
+
+    <g transform="translate(0,272)" class="mono" font-size="20">
+      <rect x="0" y="-26" width="214" height="40" rx="20" fill="#1f2430" stroke="#30363d"/>
+      <text x="107" y="0" fill="#c9d1d9" text-anchor="middle">OpenAI Chat</text>
+      <rect x="230" y="-26" width="264" height="40" rx="20" fill="#1f2430" stroke="#30363d"/>
+      <text x="362" y="0" fill="#c9d1d9" text-anchor="middle">OpenAI Responses</text>
+      <rect x="510" y="-26" width="284" height="40" rx="20" fill="#1f2430" stroke="#30363d"/>
+      <text x="652" y="0" fill="#c9d1d9" text-anchor="middle">Anthropic Messages</text>
+      <rect x="810" y="-26" width="168" height="40" rx="20" fill="#1f2430" stroke="#30363d"/>
+      <text x="894" y="0" fill="#c9d1d9" text-anchor="middle">Gemini</text>
+    </g>
+
+    <g transform="translate(0,392)">
+      <rect x="0" y="0" width="4" height="56" rx="2" fill="#a371f7"/>
+      <text class="sans" font-size="21" fill="#c9d1d9" x="26" y="24">Missing usage is not zero. A positive meter without a rate fails.</text>
+      <text class="sans" font-size="21" fill="#8b949e" x="26" y="52">Java 17+ · Jackson 3 · Reactor · optional Spring WebFlux · Apache-2.0</text>
+    </g>
+  </g>
+</svg>
